@@ -135,3 +135,41 @@ import time
 
 current_temperature = 20
 is_warming_up = True
+
+while current_temperature < 100:
+    if is_warming_up:
+        current_temperature += 1
+        time.sleep(0.1)
+        print(f"The current temperature is: {current_temperature}°C.")
+        if current_temperature == 100:
+            print("The coffee machine is ready.")
+            is_warming_up = False
+            is_hot = True
+
+while is_hot:
+    choice = input("What would you like? (espresso/latte/cappuccino/water): ").lower()
+    if choice == "off":
+        print("Thank you, bye")
+        while current_temperature > 20:
+            current_temperature -= 1
+            time.sleep(0.4)
+            print(f"The current temperature is: {current_temperature}°C.")
+            if current_temperature == 20:
+                print("You have safely switched the coffee-machine off")
+                print("Thank you, bye")
+                #choice = "off"
+        is_hot = False
+    elif choice == "report":
+        print(f"Water: {resources['water']}ml")
+        print(f"Milk: {resources['milk']}ml")
+        print(f"Coffee: {resources['coffee']}g")
+        print(f"Money: ${profit}")
+    else:
+        drink = MENU.get(choice)
+        if drink:
+            print(f"The amount you have to pay is ${drink['cost']}")
+            if is_resource_sufficient(drink["ingredients"]):
+                if process_coins_and_transaction(drink["cost"]):
+                    make_coffee(choice, drink["ingredients"])
+        else:
+            print("Invalid selection. Please choose from espresso, latte, cappuccino, water or milk.")
