@@ -173,3 +173,5 @@ while is_hot:
                     make_coffee(choice, drink["ingredients"])
         else:
             print("Invalid selection. Please choose from espresso, latte, cappuccino, water or milk.")
+
+
