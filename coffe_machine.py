@@ -181,8 +181,8 @@ while is_hot:
         while current_temperature > 20:
             current_temperature -= 1
             time.sleep(0.4 * i)
-            i *= 1.05 #Im bardziej temp. maszyny i otoczenia sie zlizaja, tym spadek temp. jest wolniejszy.
-            #napisac to samo tam, gdzie kawiarka wylacza sie z powodu braku zasobow!!!!!
+            i *= 1.05 #The closer the temperature of the object and the surroundings approach each other, 
+                      #the slower the temperature drop of the object.!
             print(f"The current temperature is: {current_temperature}°C.")
             print(f"The temperature drops by 1Deg in {round(0.4 *i, 3)} seconds.")
             if current_temperature == 20:
